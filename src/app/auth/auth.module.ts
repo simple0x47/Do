@@ -2,13 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthModule as Auth0Module } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
+
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+
+import { LoginButtonComponent } from './login-button/login-button.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
   declarations: [
-    ToolbarComponent
+    ToolbarComponent,
+    LoginButtonComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +28,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     }),
 
     // Import Angular Material modules.
-    MatToolbarModule
+    MatToolbarModule,
+    MatButtonModule
   ],
   exports: [
     ToolbarComponent
