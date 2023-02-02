@@ -1,7 +1,7 @@
 export const environment = {
     production: true,
     auth0: {
-        domain: 'simpleg.eu.auth0.com',
-        clientId: 'uqMJSRrDx91M7JmsaJ6OCeZfuOzxRoPY'
+        domain: 'simple0x47.eu.auth0.com',
+        clientId: 'ahkH71itDim4FV8YXD9HzbIwkWZ3xULg'
     }
 };
