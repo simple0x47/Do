@@ -4,8 +4,6 @@ import { AuthModule as Auth0Module } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -25,9 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
     }),
 
     // Import Angular Material modules.
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule
+    MatToolbarModule
   ],
   exports: [
     ToolbarComponent
