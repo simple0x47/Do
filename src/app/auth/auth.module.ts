@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthenticatorComponent } from './authenticator/authenticator.component';
 import { AuthModule as Auth0Module } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
 
@@ -8,7 +7,6 @@ import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
-    AuthenticatorComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +21,6 @@ import { environment } from 'src/environments/environment';
     }),
   ],
   exports: [
-    AuthenticatorComponent
   ]
 })
 export class AuthModule { }
