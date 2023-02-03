@@ -13,10 +13,6 @@ type RoleResponseItem = {
 
 type RolesResponse = RoleResponseItem[];
 
-function isValidRolesResponse(response: Object): response is RolesResponse {
-  return Array.isArray(response);
-}
-
 /**
  * Service for detecting a user's roles.
  */
