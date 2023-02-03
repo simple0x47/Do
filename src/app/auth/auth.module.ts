@@ -13,6 +13,7 @@ import { UserActionsComponent } from './user-actions/user-actions.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { LogoutButtonComponent } from './logout-button/logout-button.component';
+import { AuthApiModule } from '../auth-api/auth-api.module';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { LogoutButtonComponent } from './logout-button/logout-button.component';
       }
     }),
 
+    AuthApiModule,
     // Import Angular Material modules.
     MatToolbarModule,
     MatButtonModule,
