@@ -2,7 +2,7 @@
     <span>Do</span>
     <span class="toolbar-action-spacer"></span>
     <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-
+        <app-user-actions></app-user-actions>
     </ng-container>
 
     <ng-template #loggedOut>

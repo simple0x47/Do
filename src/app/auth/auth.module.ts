@@ -9,11 +9,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { LoginButtonComponent } from './login-button/login-button.component';
 import { MatButtonModule } from '@angular/material/button';
 
+import { UserActionsComponent } from './user-actions/user-actions.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { LogoutButtonComponent } from './logout-button/logout-button.component';
+
 
 @NgModule({
   declarations: [
     ToolbarComponent,
-    LoginButtonComponent
+    LoginButtonComponent,
+    UserActionsComponent,
+    LogoutButtonComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +36,9 @@ import { MatButtonModule } from '@angular/material/button';
 
     // Import Angular Material modules.
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule
   ],
   exports: [
     ToolbarComponent
