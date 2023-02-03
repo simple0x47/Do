@@ -28,12 +28,12 @@ export class UserRoleService {
       }
 
       // Request the user's roles by authenticating Auth0's API token.
-      let responseSubscription = this.http.get<RolesResponse>(`${environment.auth0.management_api_url}users/${user.sub}/roles`, {
+      let rolesResponseSubscription = this.http.get<RolesResponse>(`${environment.auth0.management_api_url}users/${user.sub}/roles`, {
         headers: {
           Authorization: `Bearer ${environment.auth0.management_api_token}`
         }
-      }).subscribe(response => {
-        for (let role of response) {
+      }).subscribe(rolesResponse => {
+        for (let role of rolesResponse) {
           if (role.name === 'admin') {
             observer.next(true);
             return;
@@ -44,7 +44,7 @@ export class UserRoleService {
       return {
         unsubscribe() {
           userSubscription.unsubscribe();
-          responseSubscription.unsubscribe();
+          rolesResponseSubscription.unsubscribe();
         }
       }
     });
