@@ -1,1 +1,2 @@
-<mat-checkbox [ariaChecked]="task.status === TaskStatus.DONE">{{ task.description }}</mat-checkbox>
+<mat-checkbox [checked]="task.status == TaskStatus.DONE" (change)="toggleStatus()">{{ task.description }}</mat-checkbox>
+<mat-divider></mat-divider>
