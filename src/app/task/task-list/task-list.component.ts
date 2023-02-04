@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Task, TaskStatus } from '../task';
-import { Observable, filter } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectTasks } from '../task.selector';
 

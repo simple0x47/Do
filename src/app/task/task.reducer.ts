@@ -31,7 +31,7 @@ export const taskReducer = createReducer(
     on(toggleStatus, (state, payload) => {
         const task_id = payload.task_id;
 
-        let task = state.get(task_id);
+        const task = state.get(task_id);
 
         if (task === undefined) {
             return state;

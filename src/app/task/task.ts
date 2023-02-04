@@ -29,14 +29,14 @@ export class Task {
     }
 
     public cloneWithToggledStatus(): Task {
-        let toggledStatus = this.status === TaskStatus.PENDING ? TaskStatus.DONE : TaskStatus.PENDING;
-        let new_task = new Task(this.id, toggledStatus, this.description);
+        const toggledStatus = this.status === TaskStatus.PENDING ? TaskStatus.DONE : TaskStatus.PENDING;
+        const new_task = new Task(this.id, toggledStatus, this.description);
 
         return new_task;
     }
 
     public cloneWithNewDescription(new_description: string): Task {
-        let new_task = new Task(this.id, this.status, new_description);
+        const new_task = new Task(this.id, this.status, new_description);
 
         return new_task;
     }

@@ -8,7 +8,7 @@ import { KeyValue } from "@angular/common";
 })
 export class FilterByStatusPipe implements PipeTransform {
     transform(input: KeyValue<string, Task>[] | null, status: TaskStatus): Task[] | null {
-        let result: Task[] = [];
+        const result: Task[] = [];
 
         if (input === null) {
             return result;
@@ -18,7 +18,7 @@ export class FilterByStatusPipe implements PipeTransform {
             return result;
         }
 
-        for (let task of input) {
+        for (const task of input) {
             if (task.value.status == status) {
                 result.push(task.value);
             }
