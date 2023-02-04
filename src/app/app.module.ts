@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './auth/auth.module';
 import { TaskModule } from './task/task.module';
 import { StoreModule } from '@ngrx/store';
+import { taskReducer } from './task/task.reducer';
+import { TaskListComponent } from './task/task-list/task-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,7 @@ import { StoreModule } from '@ngrx/store';
     BrowserAnimationsModule,
     AuthModule,
     TaskModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({ tasks: taskReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]

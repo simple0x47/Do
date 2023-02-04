@@ -1,0 +1,10 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <h3>{{ title }}</h3>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <ng-container *ngFor="let task of tasks$ | async;">
+        {{ task[0] }} --> {{ task[1].description }}
+    </ng-container>
+</mat-expansion-panel>
