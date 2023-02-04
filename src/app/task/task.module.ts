@@ -6,6 +6,8 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TaskListItemComponent } from './task-list-item/task-list-item.component';
 import { MatCheckboxModule } from '@angular/material/checkbox'
+import { StoreModule } from '@ngrx/store';
+import { TASK_FEATURE_KEY, taskReducer } from './task.reducer';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
   imports: [
     CommonModule,
     MatExpansionModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    StoreModule.forFeature(TASK_FEATURE_KEY, taskReducer)
   ]
 })
 export class TaskModule { }
