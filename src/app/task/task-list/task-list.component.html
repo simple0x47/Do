@@ -4,7 +4,9 @@
             <h3>{{ title }}</h3>
         </mat-panel-title>
     </mat-expansion-panel-header>
+
+    <!-- For each task create an task item which contains the task's details -->
     <ng-container *ngFor="let task of tasks$ | async;">
-        {{ task[0] }} --> {{ task[1].description }}
+        <app-task-list-item [task]="task[1]"></app-task-list-item>
     </ng-container>
 </mat-expansion-panel>
