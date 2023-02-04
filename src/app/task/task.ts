@@ -7,20 +7,37 @@ export enum TaskStatus {
 
 export class Task {
     public readonly id: string;
-    public description: string;
     public status: TaskStatus;
+    public description: string;
 
-    constructor() {
-        this.id = uuidv4();
-        this.description = '';
-        this.status = TaskStatus.PENDING;
+    constructor(id?: string, status?: TaskStatus, description?: string) {
+        if (!id) {
+            id = uuidv4();
+        }
+
+        if (!status) {
+            status = TaskStatus.PENDING;
+        }
+
+        if (!description) {
+            description = '';
+        }
+
+        this.id = id;
+        this.description = description;
+        this.status = status;
     }
 
-    public toggleStatus(): void {
-        if (this.status === TaskStatus.PENDING) {
-            this.status = TaskStatus.DONE;
-        } else {
-            this.status = TaskStatus.PENDING;
-        }
+    public cloneWithToggledStatus(): Task {
+        let toggledStatus = this.status === TaskStatus.PENDING ? TaskStatus.DONE : TaskStatus.PENDING;
+        let new_task = new Task(this.id, toggledStatus, this.description);
+
+        return new_task;
+    }
+
+    public cloneWithNewDescription(new_description: string): Task {
+        let new_task = new Task(this.id, this.status, new_description);
+
+        return new_task;
     }
 }

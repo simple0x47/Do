@@ -31,15 +31,15 @@ export const taskReducer = createReducer(
     on(toggleStatus, (state, payload) => {
         const task_id = payload.task_id;
 
-        const task = state.get(task_id);
+        let task = state.get(task_id);
 
         if (task === undefined) {
             return state;
         }
 
-        task.toggleStatus();
+        const new_task = task.cloneWithToggledStatus();
 
-        state.set(task_id, task);
+        state.set(task_id, new_task);
         return state;
     }),
     on(remove, (state, payload) => {
