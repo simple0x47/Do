@@ -14,6 +14,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { AddTaskButtonComponent } from './add-task-button/add-task-button.component';
 import { FilterByStatusPipe } from './task-list/task-list-filter-by-status';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatMenuModule,
     StoreModule.forFeature(TASK_FEATURE_KEY, taskReducer)
   ]
 })

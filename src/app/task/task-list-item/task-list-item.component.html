@@ -1,2 +1,5 @@
-<mat-checkbox [checked]="task.status == TaskStatus.DONE" (change)="toggleStatus()">{{ task.description }}</mat-checkbox>
+<mat-checkbox [checked]="task.status == TaskStatus.DONE" (change)="toggleStatus()"></mat-checkbox>
+<mat-form-field appearance="fill" class="full-width-field">
+    <input matInput [disabled]="task.status == TaskStatus.DONE">
+</mat-form-field>
 <mat-divider></mat-divider>
