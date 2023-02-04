@@ -10,7 +10,7 @@ export class FilterByStatusPipe implements PipeTransform {
     transform(input: KeyValue<string, Task>[] | null, status: TaskStatus): Task[] | null {
         let result: Task[] = [];
 
-        if (input === null || status) {
+        if (input === null) {
             return result;
         }
 
