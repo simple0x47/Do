@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AuthModule } from './auth/auth.module';
 import { TaskModule } from './task/task.module';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TaskModule } from './task/task.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthModule,
-    TaskModule
+    TaskModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [],
   bootstrap: [AppComponent]
