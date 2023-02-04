@@ -7,14 +7,14 @@ export const initialState: Map<string, Task> = new Map();
 export const taskReducer = createReducer(
     initialState,
     on(create, (state, payload) => {
-        const task = payload._p.payload;
+        const task = payload.task;
         state.set(task.id, task);
 
         return state;
     }),
     on(updateDescription, (state, payload) => {
-        const task_id = payload._p.payload.task_id;
-        const task_description = payload._p.payload.task_description;
+        const task_id = payload.task_id;
+        const task_description = payload.task_description;
 
         const task = state.get(task_id);
 
@@ -27,7 +27,7 @@ export const taskReducer = createReducer(
         return state;
     }),
     on(toggleStatus, (state, payload) => {
-        const task_id = payload._p.payload.task_id;
+        const task_id = payload.task_id;
 
         const task = state.get(task_id);
 
@@ -41,7 +41,7 @@ export const taskReducer = createReducer(
         return state;
     }),
     on(remove, (state, payload) => {
-        const task_id = payload._p.payload.task_id;
+        const task_id = payload.task_id;
 
         state.delete(task_id);
 
