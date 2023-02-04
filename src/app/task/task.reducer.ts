@@ -2,6 +2,8 @@ import { createReducer, on } from "@ngrx/store";
 import { Task } from "./task";
 import { create, remove, toggleStatus, updateDescription } from "./task.actions";
 
+export const TASK_FEATURE_KEY = 'tasks';
+
 export const initialState: Map<string, Task> = new Map();
 
 export const taskReducer = createReducer(
