@@ -6,7 +6,7 @@
     </mat-expansion-panel-header>
 
     <!-- For each task create an task item which contains the task's details -->
-    <ng-container *ngFor="let task of tasks$ | async;">
-        <app-task-list-item [task]="task[1]"></app-task-list-item>
+    <ng-container *ngFor="let task of tasks$ | async | keyvalue | filterTasksByStatus: showTasksWithStatus">
+        <app-task-list-item [task]="task"></app-task-list-item>
     </ng-container>
 </mat-expansion-panel>

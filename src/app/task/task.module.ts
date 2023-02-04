@@ -9,16 +9,25 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
 import { StoreModule } from '@ngrx/store';
 import { TASK_FEATURE_KEY, taskReducer } from './task.reducer';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { AddTaskButtonComponent } from './add-task-button/add-task-button.component';
+import { FilterByStatusPipe } from './task-list/task-list-filter-by-status';
+
 @NgModule({
   declarations: [
     TasksComponent,
     TaskListComponent,
-    TaskListItemComponent
+    TaskListItemComponent,
+    AddTaskButtonComponent,
+    FilterByStatusPipe
   ],
   imports: [
     CommonModule,
     MatExpansionModule,
     MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
     StoreModule.forFeature(TASK_FEATURE_KEY, taskReducer)
   ]
 })

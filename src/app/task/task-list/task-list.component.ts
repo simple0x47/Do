@@ -21,18 +21,6 @@ export class TaskListComponent {
   constructor(private store: Store) {
     this.title = '';
     this.showTasksWithStatus = TaskStatus.PENDING;
-    this.tasks$ = this.store.select(selectTasks).pipe(filter(tasks => {
-      if (tasks === undefined) {
-        return false;
-      }
-
-      for (const task of tasks.values()) {
-        if (task.status === this.showTasksWithStatus) {
-          return true;
-        }
-      }
-
-      return false;
-    }));
+    this.tasks$ = this.store.select(selectTasks);
   }
 }
