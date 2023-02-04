@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Task, TaskStatus } from '../task';
+import { Store } from '@ngrx/store';
+import { toggleStatus } from '../task.actions';
 
 @Component({
   selector: 'app-task-list-item',
@@ -12,7 +14,12 @@ export class TaskListItemComponent {
 
   public TaskStatus = TaskStatus;
 
-  constructor() {
+  constructor(private store: Store) {
     this.task = new Task();
+  }
+
+  public toggleStatus(): void {
+    this.task = this.task.cloneWithToggledStatus();
+    this.store.dispatch(toggleStatus({ task_id: this.task.id }))
   }
 }
