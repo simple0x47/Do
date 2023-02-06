@@ -6,7 +6,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TaskListItemComponent } from './task-list-item/task-list-item.component';
 import { MatCheckboxModule } from '@angular/material/checkbox'
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, combineReducers } from '@ngrx/store';
 import { TASK_FEATURE_KEY, taskReducer } from './task.reducer';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -20,6 +20,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ClearCompletedTasksButtonComponent } from './clear-completed-tasks-button/clear-completed-tasks-button.component';
 import { ClearConfirmationDialogComponent } from './clear-confirmation-dialog/clear-confirmation-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog'
+import { EffectsModule } from '@ngrx/effects';
+import { HydrationEffects } from './hydration.effects';
+import { hydrationMetaReducer } from './hydration.meta.reducer';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ import { MatDialogModule } from '@angular/material/dialog'
     MatInputModule,
     MatMenuModule,
     MatDialogModule,
-    StoreModule.forFeature(TASK_FEATURE_KEY, taskReducer)
+    StoreModule.forFeature(TASK_FEATURE_KEY, taskReducer, { metaReducers: [hydrationMetaReducer] }),
+    EffectsModule.forFeature(HydrationEffects)
   ]
 })
 export class TaskModule { }
