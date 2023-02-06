@@ -1,4 +1,4 @@
-<mat-expansion-panel>
+<mat-expansion-panel [expanded]="showTasksWithStatus !== TaskStatus.DONE">
     <mat-expansion-panel-header>
         <mat-panel-title>
             <h3>{{ title }}</h3>
