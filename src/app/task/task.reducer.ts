@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
-import { Task } from "./task";
-import { create, remove, toggleStatus, updateDescription } from "./task.actions";
+import { Task, TaskStatus } from "./task";
+import { create, clearDone, toggleStatus, updateDescription } from "./task.actions";
 
 export const TASK_FEATURE_KEY = 'tasks';
 
@@ -42,10 +42,18 @@ export const taskReducer = createReducer(
         state.set(task_id, new_task);
         return state;
     }),
-    on(remove, (state, payload) => {
-        const task_id = payload.task_id;
+    on(clearDone, (state) => {
+        const tasksToBeRemoved: string[] = [];
 
-        state.delete(task_id);
+        state.forEach((task, task_id) => {
+            if (task.status === TaskStatus.DONE) {
+                tasksToBeRemoved.push(task_id);
+            }
+        });
+
+        tasksToBeRemoved.forEach((task_id) => {
+            state.delete(task_id);
+        });
 
         return state;
     })

@@ -9,4 +9,10 @@
     <ng-container *ngFor="let task of tasks$ | async | keyvalue | filterTasksByStatus: showTasksWithStatus">
         <app-task-list-item [task]="task"></app-task-list-item>
     </ng-container>
+
+    <ng-container *ngIf="showTasksWithStatus === TaskStatus.DONE">
+        <mat-action-row>
+            <app-clear-completed-tasks-button></app-clear-completed-tasks-button>
+        </mat-action-row>
+    </ng-container>
 </mat-expansion-panel>

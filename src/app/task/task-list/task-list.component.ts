@@ -18,6 +18,8 @@ export class TaskListComponent {
 
   tasks$: Observable<Map<string, Task>>;
 
+  public TaskStatus = TaskStatus;
+
   constructor(private store: Store) {
     this.title = '';
     this.showTasksWithStatus = TaskStatus.PENDING;

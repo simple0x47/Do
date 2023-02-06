@@ -17,6 +17,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { ClearCompletedTasksButtonComponent } from './clear-completed-tasks-button/clear-completed-tasks-button.component';
+import { ClearConfirmationDialogComponent } from './clear-confirmation-dialog/clear-confirmation-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog'
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { MatMenuModule } from '@angular/material/menu';
     TaskListComponent,
     TaskListItemComponent,
     AddTaskButtonComponent,
-    FilterByStatusPipe
+    FilterByStatusPipe,
+    ClearCompletedTasksButtonComponent,
+    ClearConfirmationDialogComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +41,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
+    MatDialogModule,
     StoreModule.forFeature(TASK_FEATURE_KEY, taskReducer)
   ]
 })
