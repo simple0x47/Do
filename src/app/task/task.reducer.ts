@@ -24,8 +24,8 @@ export const taskReducer = createReducer(
             return state;
         }
 
-        task.description = task_description;
-        state.set(task_id, task);
+        const new_task = task.cloneWithNewDescription(task_description);
+        state.set(task_id, new_task);
         return state;
     }),
     on(toggleStatus, (state, payload) => {

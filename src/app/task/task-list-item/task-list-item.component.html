@@ -1,5 +1,6 @@
 <mat-checkbox [checked]="task.status === TaskStatus.DONE" (change)="toggleStatus()"></mat-checkbox>
 <mat-form-field appearance="fill" class="full-width-field">
-    <input matInput [disabled]="task.status === TaskStatus.DONE">
+    <input matInput type="text" [disabled]="task.status === TaskStatus.DONE"
+        (change)="setNewDescription(inputDescription.value)" [value]="task.description" #inputDescription>
 </mat-form-field>
 <mat-divider></mat-divider>
