@@ -11,6 +11,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthApiModule } from '../auth-api/auth-api.module';
+import { AdminApiModule } from '../admin-api/admin-api.module';
+import { CanActivateAdmin } from './route-guard';
 
 
 
@@ -26,7 +29,12 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatIconModule,
     StoreModule.forFeature(USER_FEATURE_KEY, userReducer),
-    EffectsModule.forFeature(UserEffects)
+    EffectsModule.forFeature(UserEffects),
+    AdminApiModule,
+    AuthApiModule
+  ],
+  providers: [
+    CanActivateAdmin
   ]
 })
 export class AdminModule { }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { UserRoleService } from 'src/app/auth-api/user-role/user-role.service';
 
@@ -8,7 +9,9 @@ import { UserRoleService } from 'src/app/auth-api/user-role/user-role.service';
   styleUrls: ['./user-actions.component.css']
 })
 export class UserActionsComponent {
-  constructor(public auth: AuthService, public userRole: UserRoleService) {
+  constructor(public auth: AuthService,
+    public userRole: UserRoleService,
+    public router: Router) {
 
   }
 }

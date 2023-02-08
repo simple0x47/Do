@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AdminApiModule } from './admin-api.module';
 import { Observable } from 'rxjs';
 import { User } from '../admin/user';
-import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { TokenManagementService } from '../auth-api/token-management/token-management.service';
 
@@ -12,26 +11,19 @@ import { TokenManagementService } from '../auth-api/token-management/token-manag
 export class UserService {
 
   public getAll$ = new Observable<User[]>((observer) => {
-    const accessToken = this.tokenManager.accessToken;
+    console.log("token: " + this.tokenManager.accessToken);
 
-    // User not logged in.
-    if (accessToken.length === 0) {
-      return {
-        unsubscribe() { }
-      }
-    }
+    const exampleUsers: User[] = [
+      new User("1", "Gabriel Ami", "gamihalachioaie@gmail.com", false),
+      new User("2", "Armando Armani", "armando@armani.com", false),
+      new User("3", "Vitto Corleone", "vitto@corleone.com", true)
+    ];
 
-    const requestSubscription = this.client.get<User[]>(`${environment.user_api.url}/get_all`, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    }).subscribe(users => {
-      observer.next(users);
-    });
+    observer.next(exampleUsers);
 
     return {
       unsubscribe() {
-        requestSubscription.unsubscribe();
+
       },
     }
   });

@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { TaskModule } from './task/task.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserAnimationsModule,
     AuthModule,
     TaskModule,
+    AdminModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot({})
   ],

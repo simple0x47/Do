@@ -3,7 +3,7 @@
 </button>
 <mat-menu #menu="matMenu">
     <ng-container *ngIf="userRole.isAdmin$ | async;">
-        <p>Admin</p>
+        <app-admin-button></app-admin-button>
     </ng-container>
 
     <!-- Show logout button only if user is authenticated -->

@@ -14,14 +14,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { LogoutButtonComponent } from './logout-button/logout-button.component';
 import { AuthApiModule } from '../auth-api/auth-api.module';
-
+import { AdminButtonComponent } from './admin-button/admin-button.component';
 
 @NgModule({
   declarations: [
     ToolbarComponent,
     LoginButtonComponent,
     UserActionsComponent,
-    LogoutButtonComponent
+    LogoutButtonComponent,
+    AdminButtonComponent
   ],
   imports: [
     CommonModule,
