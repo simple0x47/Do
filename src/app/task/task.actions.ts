@@ -5,6 +5,9 @@ export const create = createAction('[Task] Create', props<{ task: Task }>());
 export const updateDescription = createAction('[Task] Update Description', props<{ taskId: string; taskDescription: string }>());
 export const toggleStatus = createAction('[Task] Toggle Status', props<{ taskId: string }>());
 export const clearDone = createAction('[Task] Clear Done');
+export const loadSnapshot = createAction('[Task] Load Snapshot');
+export const loadSnapshotSuccessfully = createAction('[Task] Load Snapshot Successfully', props<{ snapshot: Task[] }>());
+export const loadSnapshotFailure = createAction('[Task] Load Snapshot Failure');
 
 /**
  * Generic action for indicating when a Task related action has been completed.  

@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { Task, TaskStatus } from "./task";
-import { create, clearDone, toggleStatus, updateDescription } from "./task.actions";
+import { create, clearDone, toggleStatus, updateDescription, loadSnapshotSuccessfully } from "./task.actions";
 
 export const TASK_FEATURE_KEY = 'tasks';
 
@@ -54,6 +54,15 @@ export const taskReducer = createReducer(
         tasksToBeRemoved.forEach((task_id) => {
             state.delete(task_id);
         });
+
+        return state;
+    }),
+    on(loadSnapshotSuccessfully, (state, payload) => {
+        state.clear();
+
+        for (let task of payload.snapshot) {
+            state.set(task.id, task);
+        }
 
         return state;
     })
