@@ -22,7 +22,6 @@ export class HydrationEffects implements OnInitEffects {
                 }
 
                 try {
-                    console.log("localStorageValue: " + localStorageValue);
                     const partialState: Map<string, Task> = new Map(Object.entries(JSON.parse(localStorageValue)));
                     const state: Map<string, Task> = new Map();
 
