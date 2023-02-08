@@ -15,8 +15,8 @@ export const taskReducer = createReducer(
         return state;
     }),
     on(updateDescription, (state, payload) => {
-        const task_id = payload.task_id;
-        const task_description = payload.task_description;
+        const task_id = payload.taskId;
+        const task_description = payload.taskDescription;
 
         const task = state.get(task_id);
 
@@ -29,7 +29,7 @@ export const taskReducer = createReducer(
         return state;
     }),
     on(toggleStatus, (state, payload) => {
-        const task_id = payload.task_id;
+        const task_id = payload.taskId;
 
         const task = state.get(task_id);
 

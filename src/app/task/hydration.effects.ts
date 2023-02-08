@@ -3,7 +3,7 @@ import { Actions, OnInitEffects, createEffect, ofType } from "@ngrx/effects";
 import { Action, Store } from "@ngrx/store";
 import { Task } from "./task";
 import { hydrate, hydrateFailure, hydrateSuccess } from "./hydration.actions";
-import { distinctUntilChanged, map, switchMap, tap } from "rxjs";
+import { map, switchMap, tap } from "rxjs";
 import { clearDone, create, toggleStatus, updateDescription } from "./task.actions";
 import { selectTasks } from "./task.selector";
 

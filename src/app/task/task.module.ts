@@ -23,6 +23,8 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { EffectsModule } from '@ngrx/effects';
 import { HydrationEffects } from './hydration.effects';
 import { hydrationMetaReducer } from './hydration.meta.reducer';
+import { TaskApiModule } from '../task-api/task-api.module';
+import { TaskEffects } from './task.effects';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { hydrationMetaReducer } from './hydration.meta.reducer';
     MatMenuModule,
     MatDialogModule,
     StoreModule.forFeature(TASK_FEATURE_KEY, taskReducer, { metaReducers: [hydrationMetaReducer] }),
-    EffectsModule.forFeature(HydrationEffects)
+    EffectsModule.forFeature(HydrationEffects, TaskEffects),
+    TaskApiModule
   ]
 })
 export class TaskModule { }
