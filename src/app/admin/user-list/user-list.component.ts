@@ -5,6 +5,8 @@ import { selectUsers } from '../user.selector';
 import { Observable, Subscription, first } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { getAll } from '../user.actions';
+import { MatDialog } from '@angular/material/dialog';
+import { UserViewDialogComponent } from '../user-view-dialog/user-view-dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -19,7 +21,8 @@ export class UserListComponent {
 
   private usersSubscription: Subscription;
 
-  constructor(private store: Store) {
+  constructor(private store: Store,
+    private dialog: MatDialog) {
     this.users$ = this.store.select(selectUsers);
 
     this.usersSubscription = this.users$.subscribe(users => {
@@ -33,5 +36,13 @@ export class UserListComponent {
 
   ngOnDestroy() {
     this.usersSubscription.unsubscribe();
+  }
+
+  public openUserViewDialog(user: User) {
+    this.dialog.open(UserViewDialogComponent, {
+      data: {
+        user: user,
+      }
+    })
   }
 }

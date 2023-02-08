@@ -14,12 +14,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { AuthApiModule } from '../auth-api/auth-api.module';
 import { AdminApiModule } from '../admin-api/admin-api.module';
 import { CanActivateAdmin } from './route-guard';
-
+import { MatCardModule } from '@angular/material/card';
+import { UserViewDialogComponent } from './user-view-dialog/user-view-dialog.component';
 
 
 @NgModule({
   declarations: [
-    UserListComponent
+    UserListComponent,
+    UserViewDialogComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { CanActivateAdmin } from './route-guard';
     MatCheckboxModule,
     MatButtonModule,
     MatIconModule,
+    MatCardModule,
     StoreModule.forFeature(USER_FEATURE_KEY, userReducer),
     EffectsModule.forFeature(UserEffects),
     AdminApiModule,

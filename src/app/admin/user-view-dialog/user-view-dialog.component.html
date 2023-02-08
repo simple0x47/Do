@@ -1,0 +1,8 @@
+<div class="user-view-dialog">
+    <h1 mat-dialog-title>{{ data.user.name }} ({{ data.user.id }})</h1>
+    <div mat-dialog-content>
+        <h4>{{ data.user.email }}</h4>
+
+        <mat-checkbox [checked]="data.user.hasUsedTranslator" disabled>Has used translator</mat-checkbox>
+    </div>
+</div>
