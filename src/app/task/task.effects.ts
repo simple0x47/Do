@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { TaskActionService } from "../task-api/task-action/task-action.service";
 import { EMPTY, catchError, mergeMap } from "rxjs";
 import { map } from "rxjs/operators";
-import { create, actionCompleted, toggleStatus, updateDescription, clearDone, loadSnapshot, loadSnapshotSuccessfully } from "./task.actions";
+import { create, actionCompleted, toggleStatus, updateDescription, clearDone, loadSnapshot, loadSnapshotSuccess } from "./task.actions";
 import { TasksSnapshotService } from "../task-api/tasks-snapshot/tasks-snapshot.service";
 
 @Injectable()
@@ -48,7 +48,7 @@ export class TaskEffects {
         ofType(loadSnapshot),
         mergeMap(() => this.taskSnapshotService.getSnapshot$
             .pipe(
-                map(snapshot => (loadSnapshotSuccessfully({ snapshot }))),
+                map(snapshot => (loadSnapshotSuccess({ snapshot }))),
                 catchError(() => EMPTY)
             ))
     ));

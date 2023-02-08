@@ -6,7 +6,7 @@ export const updateDescription = createAction('[Task] Update Description', props
 export const toggleStatus = createAction('[Task] Toggle Status', props<{ taskId: string }>());
 export const clearDone = createAction('[Task] Clear Done');
 export const loadSnapshot = createAction('[Task] Load Snapshot');
-export const loadSnapshotSuccessfully = createAction('[Task] Load Snapshot Successfully', props<{ snapshot: Task[] }>());
+export const loadSnapshotSuccess = createAction('[Task] Load Snapshot Success', props<{ snapshot: Task[] }>());
 export const loadSnapshotFailure = createAction('[Task] Load Snapshot Failure');
 
 /**
