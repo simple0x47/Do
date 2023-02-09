@@ -16,12 +16,16 @@ import { AdminApiModule } from '../admin-api/admin-api.module';
 import { CanActivateAdmin } from './route-guard';
 import { MatCardModule } from '@angular/material/card';
 import { UserViewDialogComponent } from './user-view-dialog/user-view-dialog.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { UserActionsViewComponent } from './user-actions-view/user-actions-view.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
   declarations: [
     UserListComponent,
-    UserViewDialogComponent
+    UserViewDialogComponent,
+    UserActionsViewComponent
   ],
   imports: [
     CommonModule,
@@ -31,6 +35,8 @@ import { UserViewDialogComponent } from './user-view-dialog/user-view-dialog.com
     MatButtonModule,
     MatIconModule,
     MatCardModule,
+    MatExpansionModule,
+    MatDividerModule,
     StoreModule.forFeature(USER_FEATURE_KEY, userReducer),
     EffectsModule.forFeature(UserEffects),
     AdminApiModule,

@@ -4,5 +4,6 @@
         <h4>{{ data.user.email }}</h4>
 
         <mat-checkbox [checked]="data.user.hasUsedTranslator" disabled>Has used translator</mat-checkbox>
+        <app-user-actions-view [user]="data.user"></app-user-actions-view>
     </div>
 </div>

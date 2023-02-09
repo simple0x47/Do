@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TaskApiModule } from '../task-api.module';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { ActionType, TaskAction } from './task-action';
+import { ActionType, TaskAction } from '../../task-action';
 import { AuthService } from '@auth0/auth0-angular';
 import { first } from 'rxjs';
 

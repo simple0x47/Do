@@ -1,0 +1,19 @@
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Usage history
+        </mat-panel-title>
+        <mat-panel-description>
+            Actions done by the user within the app
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <ng-container *ngIf="user !== null">
+        <ng-container *ngFor="let action of user.actions">
+            <mat-card class="action-item">
+                <mat-card-content class="action-item-content">
+                    [{{ action.date().toLocaleString("en-AU") }}] {{ action.toString() }}: {{ action.payload }}
+                </mat-card-content>
+            </mat-card>
+        </ng-container>
+    </ng-container>
+</mat-expansion-panel>

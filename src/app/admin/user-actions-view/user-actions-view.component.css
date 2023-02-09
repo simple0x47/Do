@@ -1,0 +1,15 @@
+.action-item {
+    margin: 16px;
+}
+
+.action-item-title {
+    padding: 4px;
+}
+
+.action-item-content {
+    padding: 8px;
+}
+
+.action-item-divider {
+    padding-top: 16px;
+}
