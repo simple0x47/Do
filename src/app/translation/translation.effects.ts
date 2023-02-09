@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { TranslatorService } from "../translation-api/translator/translator.service";
-import { loadLanguages, loadLanguagesSuccess, translate } from "./translation.actions";
+import { loadLanguages, loadLanguagesSuccess, translate, translateSuccess } from "./translation.actions";
 import { EMPTY, catchError, map, mergeMap } from "rxjs";
 
 @Injectable()
@@ -15,7 +15,13 @@ export class TranslationEffects {
             ))
     ));
 
-
+    translate = createEffect(() => this.actions$.pipe(
+        ofType(translate),
+        mergeMap((payload) => this.translatorService.translate(payload.sourceLanguage, payload.targetLanguage, payload.translatables).pipe(
+            map(_ => (translateSuccess())),
+            catchError(() => EMPTY)
+        ))
+    ));
 
     constructor(private actions$: Actions,
         private translatorService: TranslatorService) { }

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { selectLanguages } from '../translation.selector';
 import { Translatable } from '../../translation-api/translatable';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { loadLanguages } from '../translation.actions';
+import { loadLanguages, translate } from '../translation.actions';
 
 export interface DialogData {
   translatables: Translatable[]
@@ -25,7 +25,6 @@ export class TranslatorDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData,
     private store: Store) {
     this.languages$ = this.store.select(selectLanguages);
-
     this.translatables = data.translatables;
   }
 
@@ -54,7 +53,8 @@ export class TranslatorDialogComponent {
       return;
     }
 
-
+    console.log("this.translatables: " + this.translatables);
+    this.store.dispatch(translate({ sourceLanguage: this.sourceLanguage, targetLanguage: this.targetLanguage, translatables: this.translatables }));
   }
 
   ngOnInit() {

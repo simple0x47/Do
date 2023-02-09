@@ -15,10 +15,10 @@ export class TranslateButtonComponent {
   }
 
   public openTranslationDialog() {
-    const translatablesObservable = this.taskTranslatableAdapter.taskTranslatables$.subscribe(translatabes => {
+    const translatablesObservable = this.taskTranslatableAdapter.taskTranslatables$.subscribe(translatables => {
       this.dialog.open(TranslatorDialogComponent, {
         data: {
-          translatabes
+          translatables
         }
       });
     });
