@@ -25,6 +25,9 @@ import { HydrationEffects } from './hydration.effects';
 import { hydrationMetaReducer } from './hydration.meta.reducer';
 import { TaskApiModule } from '../task-api/task-api.module';
 import { TaskEffects } from './task.effects';
+import { TaskTranslatableAdapter } from './task-translatable-adapter';
+import { TranslationModule } from '../translation/translation.module';
+import { TranslateButtonComponent } from './translate-button/translate-button.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { TaskEffects } from './task.effects';
     AddTaskButtonComponent,
     FilterByStatusPipe,
     ClearCompletedTasksButtonComponent,
-    ClearConfirmationDialogComponent
+    ClearConfirmationDialogComponent,
+    TranslateButtonComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +53,11 @@ import { TaskEffects } from './task.effects';
     MatDialogModule,
     StoreModule.forFeature(TASK_FEATURE_KEY, taskReducer, { metaReducers: [hydrationMetaReducer] }),
     EffectsModule.forFeature(HydrationEffects, TaskEffects),
-    TaskApiModule
+    TaskApiModule,
+    TranslationModule
+  ],
+  providers: [
+    TaskTranslatableAdapter
   ]
 })
 export class TaskModule { }

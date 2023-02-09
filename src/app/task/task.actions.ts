@@ -9,6 +9,8 @@ export const loadSnapshot = createAction('[Task] Load Snapshot');
 export const loadSnapshotSuccess = createAction('[Task] Load Snapshot Success', props<{ snapshot: Task[] }>());
 export const loadSnapshotFailure = createAction('[Task] Load Snapshot Failure');
 
+export const translateAll = createAction('[Task] Translate All');
+
 /**
  * Generic action for indicating when a Task related action has been completed.  
  */

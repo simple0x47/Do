@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Translate</h2>
+<mat-dialog-content>
+    <mat-form-field appearance="fill">
+        <mat-label>From</mat-label>
+        <mat-select (selectionChange)="setSourceLanguage($event.value)" required>
+            <ng-container *ngFor="let language of languages$ | async">
+                <mat-option [value]="language.language">{{ language.name }}</mat-option>
+            </ng-container>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>To</mat-label>
+        <mat-select (selectionChange)="setTargetLanguage($event.value)" required>
+            <ng-container *ngFor="let language of languages$ | async">
+                <mat-option [value]="language.language">{{ language.name }}</mat-option>
+            </ng-container>
+        </mat-select>
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button (click)="translate()" [disabled]="shouldTranslateButtonBeDisabled()"
+        mat-dialog-close>Translate</button>
+</mat-dialog-actions>
