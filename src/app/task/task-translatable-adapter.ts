@@ -4,7 +4,8 @@ import { selectTasks } from "./task.selector";
 import { Task } from "./task";
 import { Observable, map } from "rxjs";
 import { Translatable } from "../translation-api/translatable";
-import { updateDescription } from "./task.actions";
+import { translate, updateDescription } from "./task.actions";
+import { TranslationMetadata } from "../translation-api/translation-metadata";
 
 @Injectable()
 export class TaskTranslatableAdapter {
@@ -22,9 +23,12 @@ export class TaskTranslatableAdapter {
                         getText(): string {
                             return keyValueTask[1].description;
                         },
-                        setText(translatedText: string): void {
+                        setText(translatedText: string, metadata: TranslationMetadata): void {
                             // Trigger update description passing as a parameter the translated text.
                             store.dispatch(updateDescription({ taskId: keyValueTask[0], taskDescription: translatedText }));
+
+                            // Trigger translate so we register that the user has used the translation feature.
+                            store.dispatch(translate({ taskId: keyValueTask[0], metadata }));
                         },
                     })
                 }

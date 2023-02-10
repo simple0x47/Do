@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { LanguagesResponse } from './languages-response';
 import { TranslationResponse } from './translation-response';
 import { Translatable } from '../translatable';
+import { TranslationMetadata } from '../translation-metadata';
 
 @Injectable({
   providedIn: TranslationApiModule
@@ -65,8 +66,14 @@ export class TranslatorService {
           return;
         }
 
+        // Let the translatable know about the translation itself.
+        let translationMetadata: TranslationMetadata = {
+          sourceLanguage,
+          targetLanguage
+        }
+
         for (let i = 0; i < translatables.length; i++) {
-          translatables[i].setText(translationResponse.data.translations[i].translatedText);
+          translatables[i].setText(translationResponse.data.translations[i].translatedText, translationMetadata);
         }
 
         observer.next(true);

@@ -1,5 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { Task } from "./task";
+import { TranslationMetadata } from "../translation-api/translation-metadata";
 
 export const create = createAction('[Task] Create', props<{ task: Task }>());
 export const updateDescription = createAction('[Task] Update Description', props<{ taskId: string; taskDescription: string }>());
@@ -9,7 +10,7 @@ export const loadSnapshot = createAction('[Task] Load Snapshot');
 export const loadSnapshotSuccess = createAction('[Task] Load Snapshot Success', props<{ snapshot: Task[] }>());
 export const loadSnapshotFailure = createAction('[Task] Load Snapshot Failure');
 
-export const translateAll = createAction('[Task] Translate All');
+export const translate = createAction('[Task] Translate', props<{ taskId: string, metadata: TranslationMetadata }>());
 
 /**
  * Generic action for indicating when a Task related action has been completed.  

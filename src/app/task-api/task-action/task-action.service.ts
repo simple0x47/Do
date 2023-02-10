@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { ActionType, TaskAction } from '../../task-action';
 import { AuthService } from '@auth0/auth0-angular';
 import { first } from 'rxjs';
+import { TranslationMetadata } from 'src/app/translation-api/translation-metadata';
 
 @Injectable({
   providedIn: TaskApiModule
@@ -47,6 +48,11 @@ export class TaskActionService {
 
   public registerClearDone() {
     const action = new TaskAction(ActionType.CLEAR_DONE, "")
+    this.registerAction(action);
+  }
+
+  public registerTranslate(taskId: string, metadata: TranslationMetadata) {
+    const action = new TaskAction(ActionType.TRANSLATE, JSON.stringify({ taskId: taskId, metadata }));
     this.registerAction(action);
   }
 
