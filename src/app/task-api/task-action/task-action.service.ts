@@ -20,7 +20,11 @@ export class TaskActionService {
   private registeredActionsCache: TaskAction[];
 
   constructor(private client: HttpClient, private auth: AuthService) {
-    this.auth.getAccessTokenSilently().pipe(first()).subscribe(token => {
+    this.auth.getAccessTokenSilently({
+      authorizationParams: {
+        audience: environment.auth0.audience
+      }
+    }).pipe(first()).subscribe(token => {
       this.accessToken = token;
     });
 
@@ -64,7 +68,7 @@ export class TaskActionService {
 
     this.registeredActionsCache.push(action);
 
-    if (environment.task_api.actions_per_request >= this.registeredActionsCache.length) {
+    if (environment.task_api.actions_per_request <= this.registeredActionsCache.length) {
       this.sendActions();
     }
   }
@@ -80,7 +84,8 @@ export class TaskActionService {
       JSON.stringify(this.registeredActionsCache),
       {
         headers: {
-          Authorization: `Bearer ${this.accessToken}`
+          Authorization: `Bearer ${this.accessToken}`,
+          "Content-Type": "application/json",
         }
       }
     ).pipe(first()).subscribe();
