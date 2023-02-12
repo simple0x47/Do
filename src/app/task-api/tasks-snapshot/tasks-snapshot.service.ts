@@ -10,28 +10,29 @@ import { environment } from 'src/environments/environment';
   providedIn: TaskApiModule
 })
 export class TasksSnapshotService {
-
-  private accessToken: string = "";
-
   public getSnapshot$ = new Observable<Task[]>((observer) => {
-    const requestSubscription = this.client.get<Task[]>(`${environment.task_api.url}/get_snapshot`, {
-      headers: {
-        Authorization: `Bearer ${this.accessToken}`
+    const tokenSubscription = this.auth.getAccessTokenSilently({
+      authorizationParams: {
+        audience: environment.auth0.audience
       }
-    }).subscribe((snapshot) => {
-      observer.next(snapshot);
+    }).pipe(first()).subscribe((token) => {
+      this.client.get<Task[]>(`${environment.task_api.url}/get_snapshot`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).subscribe((snapshot) => {
+        observer.next(snapshot);
+      });
     });
 
     return {
       unsubscribe() {
-        requestSubscription.unsubscribe();
+        tokenSubscription.unsubscribe();
       },
     }
   });
 
   constructor(private client: HttpClient, private auth: AuthService) {
-    this.auth.getAccessTokenSilently().pipe(first()).subscribe((token) => {
-      this.accessToken = token;
-    });
+
   }
 }
