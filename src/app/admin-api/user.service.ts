@@ -3,7 +3,7 @@ import { AdminApiModule } from './admin-api.module';
 import { Observable, first } from 'rxjs';
 import { User } from '../admin/user';
 import { HttpClient } from '@angular/common/http';
-import { ActionType, TaskAction } from '../task-action';
+import { TaskAction } from '../task-action';
 import { AuthService } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
 
@@ -45,16 +45,16 @@ export class UserService {
    * @param users
    */
   private regenerateUsersActions(users: User[]) {
-    for (let user of users) {
+    for (const user of users) {
       user.actions = this.regenerateActions(user.actions);
     }
   }
 
   private regenerateActions(actions: TaskAction[]): TaskAction[] {
-    let regeneratedActions: TaskAction[] = [];
+    const regeneratedActions: TaskAction[] = [];
 
-    for (let action of actions) {
-      let regeneratedAction = new TaskAction(action.action, action.payload);
+    for (const action of actions) {
+      const regeneratedAction = new TaskAction(action.action, action.payload);
       regeneratedAction.timestamp = action.timestamp;
 
       regeneratedActions.push(regeneratedAction);
