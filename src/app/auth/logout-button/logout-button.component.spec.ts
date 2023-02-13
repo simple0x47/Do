@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LogoutButtonComponent } from './logout-button.component';
+import { AuthService } from '@auth0/auth0-angular';
 
 describe('LogoutButtonComponent', () => {
   let component: LogoutButtonComponent;
@@ -8,9 +9,12 @@ describe('LogoutButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LogoutButtonComponent ]
+      declarations: [LogoutButtonComponent],
+      providers: [
+        { provide: AuthService, useValue: {} }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(LogoutButtonComponent);
     component = fixture.componentInstance;
