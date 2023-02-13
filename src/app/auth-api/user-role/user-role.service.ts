@@ -27,7 +27,6 @@ export class UserRoleService {
         return;
       }
 
-      console.log("re")
       // Request the user's roles by authenticating Auth0's API token.
       const rolesResponseSubscription = this.http.get<RolesResponse>(
         `${environment.user_api.url}/get_roles/${user.sub}`, {})
