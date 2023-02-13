@@ -5,7 +5,7 @@ export class User {
     public readonly name: string;
     public readonly email: string;
     public readonly hasUsedTranslator: boolean;
-    public readonly actions: TaskAction[];
+    public actions: TaskAction[];
 
     constructor(id: string, name: string, email: string, hasUsedTranslator: boolean, actions: TaskAction[] = []) {
         this.id = id;
