@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { User } from '../user';
 import { Store } from '@ngrx/store';
 import { selectUsers } from '../user.selector';
-import { Observable, Subscription, first } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { getAll } from '../user.actions';
 import { MatDialog } from '@angular/material/dialog';

@@ -6,7 +6,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { TaskListItemComponent } from './task-list-item/task-list-item.component';
 import { MatCheckboxModule } from '@angular/material/checkbox'
-import { StoreModule, combineReducers } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { TASK_FEATURE_KEY, taskReducer } from './task.reducer';
 
 import { MatButtonModule } from '@angular/material/button';

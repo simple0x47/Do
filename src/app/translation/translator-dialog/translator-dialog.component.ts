@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectLanguages } from '../translation.selector';
 import { Translatable } from '../../translation-api/translatable';

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { selectTasks } from "./task.selector";
 import { Task } from "./task";
-import { Observable, map } from "rxjs";
+import { Observable } from "rxjs";
 import { Translatable } from "../translation-api/translatable";
 import { translate, updateDescription } from "./task.actions";
 import { TranslationMetadata } from "../translation-api/translation-metadata";

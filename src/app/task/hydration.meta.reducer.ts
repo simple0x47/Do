@@ -1,4 +1,4 @@
-import { Action, ActionReducer, UPDATE } from "@ngrx/store";
+import { Action, ActionReducer } from "@ngrx/store";
 import { Task } from "./task";
 import { hydrateSuccess } from "./hydration.actions";
 

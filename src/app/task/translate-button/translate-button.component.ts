@@ -15,7 +15,7 @@ export class TranslateButtonComponent {
   }
 
   public openTranslationDialog() {
-    const translatablesObservable = this.taskTranslatableAdapter.taskTranslatables$.subscribe(translatables => {
+    this.taskTranslatableAdapter.taskTranslatables$.subscribe(translatables => {
       this.dialog.open(TranslatorDialogComponent, {
         data: {
           translatables
