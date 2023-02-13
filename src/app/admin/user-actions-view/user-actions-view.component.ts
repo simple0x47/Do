@@ -9,6 +9,4 @@ import { User } from '../user';
 export class UserActionsViewComponent {
   @Input()
   public user: User | null = null;
-
-  constructor() { }
 }
