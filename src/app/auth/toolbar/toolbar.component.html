@@ -1,5 +1,5 @@
 <mat-toolbar>
-    <span>Do</span>
+    <span (click)="goHome()" class="home-link">Do</span>
     <span class="toolbar-action-spacer"></span>
     <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
         <app-user-actions></app-user-actions>
