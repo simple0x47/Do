@@ -4,6 +4,7 @@ import { UserActionsComponent } from './user-actions.component';
 import { AuthService } from '@auth0/auth0-angular';
 import { UserRoleService } from 'src/app/auth-api/user-role/user-role.service';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 describe('UserActionsComponent', () => {
   let component: UserActionsComponent;
@@ -13,7 +14,8 @@ describe('UserActionsComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [UserActionsComponent],
       imports: [
-        MatIconModule
+        MatIconModule,
+        MatMenuModule
       ],
       providers: [
         { provide: AuthService, useValue: {} },
