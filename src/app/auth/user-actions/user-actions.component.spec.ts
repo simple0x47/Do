@@ -4,7 +4,12 @@ import { UserActionsComponent } from './user-actions.component';
 import { AuthService } from '@auth0/auth0-angular';
 import { UserRoleService } from 'src/app/auth-api/user-role/user-role.service';
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatMenu, MatMenuModule } from '@angular/material/menu';
+import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { By } from '@angular/platform-browser';
+import { AdminButtonComponent } from '../admin-button/admin-button.component';
+import { LogoutButtonComponent } from '../logout-button/logout-button.component';
 
 describe('UserActionsComponent', () => {
   let component: UserActionsComponent;
@@ -12,13 +17,18 @@ describe('UserActionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UserActionsComponent],
+      declarations: [
+        UserActionsComponent,
+        AdminButtonComponent,
+        LogoutButtonComponent
+      ],
       imports: [
         MatIconModule,
         MatMenuModule
       ],
       providers: [
-        { provide: AuthService, useValue: {} },
+        { provide: AuthService, useValue: { isAuthenticated$: of(true), } },
+        { provide: HttpClient, useValue: {} },
         { provide: UserRoleService, useValue: {} }
       ]
     })
