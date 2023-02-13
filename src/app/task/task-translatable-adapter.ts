@@ -15,10 +15,10 @@ export class TaskTranslatableAdapter {
     constructor(private store: Store) {
         this.tasks$ = this.store.select(selectTasks);
         this.taskTranslatables$ = new Observable((observer) => {
-            let translatables: Translatable[] = [];
+            const translatables: Translatable[] = [];
 
-            let tasksSubscription = this.tasks$.subscribe(tasks => {
-                for (let keyValueTask of tasks) {
+            const tasksSubscription = this.tasks$.subscribe(tasks => {
+                for (const keyValueTask of tasks) {
                     translatables.push({
                         getText(): string {
                             return keyValueTask[1].description;

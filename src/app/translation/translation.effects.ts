@@ -6,22 +6,22 @@ import { EMPTY, catchError, map, mergeMap } from "rxjs";
 
 @Injectable()
 export class TranslationEffects {
-    loadLanguages$ = createEffect(() => this.actions$.pipe(
+    loadLanguages$ = createEffect(() => { return this.actions$.pipe(
         ofType(loadLanguages),
         mergeMap(() => this.translatorService.getLanguages$
             .pipe(
                 map(languages => (loadLanguagesSuccess({ languages }))),
                 catchError(() => EMPTY)
             ))
-    ));
+    ) });
 
-    translate = createEffect(() => this.actions$.pipe(
+    translate = createEffect(() => { return this.actions$.pipe(
         ofType(translate),
         mergeMap((payload) => this.translatorService.translate(payload.sourceLanguage, payload.targetLanguage, payload.translatables).pipe(
             map(_ => (translateSuccess())),
             catchError(() => EMPTY)
         ))
-    ));
+    ) });
 
     constructor(private actions$: Actions,
         private translatorService: TranslatorService) { }

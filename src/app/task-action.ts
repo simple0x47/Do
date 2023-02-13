@@ -37,7 +37,7 @@ export class TaskAction {
      * @returns Date when the action has been realized.
      */
     public date(): Date {
-        let date = new Date(this.timestamp);
+        const date = new Date(this.timestamp);
 
         return date;
     }

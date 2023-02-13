@@ -60,7 +60,7 @@ export const taskReducer = createReducer(
     on(loadSnapshotSuccess, (state, payload) => {
         state.clear();
 
-        for (let task of payload.snapshot) {
+        for (const task of payload.snapshot) {
             state.set(task.id, task);
         }
 

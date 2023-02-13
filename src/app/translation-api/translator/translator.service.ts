@@ -17,7 +17,7 @@ export class TranslatorService {
    * Get the compatible languages from the Google API.
    */
   public getLanguages$: Observable<Language[]> = new Observable((observer) => {
-    let languagesSubscription = this.client.get<LanguagesResponse>(
+    const languagesSubscription = this.client.get<LanguagesResponse>(
       `${environment.translation_api.url}/languages?target=en&model=nmt&key=${environment.translation_api.api_key}`
     ).subscribe(languageResponse => {
       observer.next(languageResponse.data.languages);
@@ -57,7 +57,7 @@ export class TranslatorService {
         queries += "q=" + encodeURIComponent(translatables[i].getText()) + "&";
       }
 
-      let translateSubscription = this.client.post<TranslationResponse>(
+      const translateSubscription = this.client.post<TranslationResponse>(
         `${environment.translation_api.url}?${queries}target=${targetLanguage}&source=${sourceLanguage}&model=base&key=${environment.translation_api.api_key}`,
         {}
       ).subscribe(translationResponse => {
@@ -67,7 +67,7 @@ export class TranslatorService {
         }
 
         // Let the translatable know about the translation itself.
-        let translationMetadata: TranslationMetadata = {
+        const translationMetadata: TranslationMetadata = {
           sourceLanguage,
           targetLanguage
         }

@@ -6,13 +6,13 @@ import { UserService } from "../admin-api/user.service";
 
 @Injectable()
 export class UserEffects {
-    getAll$ = createEffect(() => this.actions$.pipe(
+    getAll$ = createEffect(() => { return this.actions$.pipe(
         ofType(getAll),
         mergeMap(() => this.userService.getAll$.pipe(
             map(users => (getAllSuccess({ users }))),
             catchError(() => EMPTY)
         ))
-    ));
+    ) });
 
     constructor(private actions$: Actions,
         private userService: UserService) { }

@@ -2,7 +2,7 @@ import { createReducer, on } from "@ngrx/store";
 import { User } from "./user";
 import { getAllSuccess } from "./user.actions";
 
-export const USER_FEATURE_KEY: string = "users";
+export const USER_FEATURE_KEY = "users";
 
 export const initialState: User[] = [];
 

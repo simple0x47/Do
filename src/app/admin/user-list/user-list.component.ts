@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { User } from '../user';
 import { Store } from '@ngrx/store';
 import { selectUsers } from '../user.selector';
@@ -13,7 +13,7 @@ import { UserViewDialogComponent } from '../user-view-dialog/user-view-dialog.co
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent {
+export class UserListComponent implements OnInit, OnDestroy {
   public users$: Observable<User[]>;
 
   public dataSource = new MatTableDataSource<User>([]);

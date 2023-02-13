@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectLanguages } from '../translation.selector';
 import { Translatable } from '../../translation-api/translatable';
@@ -14,13 +14,13 @@ export interface DialogData {
   templateUrl: './translator-dialog.component.html',
   styleUrls: ['./translator-dialog.component.css']
 })
-export class TranslatorDialogComponent {
+export class TranslatorDialogComponent implements OnInit {
   languages$;
 
   public translatables: Translatable[] = [];
 
-  private sourceLanguage: string = "";
-  private targetLanguage: string = "";
+  private sourceLanguage = "";
+  private targetLanguage = "";
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData,
     private store: Store) {

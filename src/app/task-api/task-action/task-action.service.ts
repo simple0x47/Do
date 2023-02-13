@@ -11,7 +11,7 @@ import { TranslationMetadata } from 'src/app/translation-api/translation-metadat
   providedIn: TaskApiModule
 })
 export class TaskActionService {
-  private accessToken: string = "";
+  private accessToken = "";
 
   /**
    * In memory storage of the registered actions, used for sending many actions per request, reducing therefore

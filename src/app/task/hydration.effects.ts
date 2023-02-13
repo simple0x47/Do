@@ -7,12 +7,12 @@ import { map, switchMap, tap } from "rxjs";
 import { clearDone, create, toggleStatus, updateDescription } from "./task.actions";
 import { selectTasks } from "./task.selector";
 
-const TASKS_STATE_LOCAL_STORAGE_KEY: string = "tasksState";
+const TASKS_STATE_LOCAL_STORAGE_KEY = "tasksState";
 
 @Injectable()
 export class HydrationEffects implements OnInitEffects {
     hydrateEffect$ = createEffect(() =>
-        this.action$.pipe(
+        { return this.action$.pipe(
             ofType(hydrate),
             map(() => {
                 const localStorageValue = localStorage.getItem(TASKS_STATE_LOCAL_STORAGE_KEY);
@@ -26,7 +26,7 @@ export class HydrationEffects implements OnInitEffects {
                     const state: Map<string, Task> = new Map();
 
                     // Instantiate tasks from partial data saved within the local storage.
-                    for (let item of partialState) {
+                    for (const item of partialState) {
                         const task = item[1];
 
                         state.set(item[0], new Task(task.id, task.status, task.description));
@@ -38,19 +38,19 @@ export class HydrationEffects implements OnInitEffects {
                     return hydrateFailure();
                 }
             })
-        )
+        ) }
     );
 
     /**
      * Serialize every change into the local storage, in order to persist through
      * a page refresh.
      */
-    serializeState$ = createEffect(() => this.action$.pipe(
+    serializeState$ = createEffect(() => { return this.action$.pipe(
         ofType(hydrateSuccess, hydrateFailure, create, updateDescription, toggleStatus, clearDone),
         switchMap(() => this.store.select(selectTasks)),
         tap((state) => {
             localStorage.setItem(TASKS_STATE_LOCAL_STORAGE_KEY, JSON.stringify(Object.fromEntries(state)));
-        })),
+        })) },
         { dispatch: false });
 
     constructor(private action$: Actions, private store: Store) {
