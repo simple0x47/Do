@@ -5,6 +5,7 @@ import { EMPTY, catchError, mergeMap } from "rxjs";
 import { map } from "rxjs/operators";
 import { create, actionCompleted, toggleStatus, updateDescription, clearDone, loadSnapshot, loadSnapshotSuccess, translate } from "./task.actions";
 import { TasksSnapshotService } from "../task-api/tasks-snapshot/tasks-snapshot.service";
+import { Task } from "./task";
 
 @Injectable()
 export class TaskEffects {
@@ -57,7 +58,14 @@ export class TaskEffects {
         ofType(loadSnapshot),
         mergeMap(() => this.taskSnapshotService.getSnapshot$
             .pipe(
-                map(snapshot => (loadSnapshotSuccess({ snapshot }))),
+                map(snapshot => {
+                    let tasks: Task[] = [];
+                    for (let task of snapshot) {
+                        tasks.push(new Task(task.id, task.status, task.description));
+                    }
+
+                    return loadSnapshotSuccess({ snapshot: tasks });
+                }),
                 catchError(() => EMPTY)
             ))
     ));
