@@ -1,6 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TaskListItemComponent } from './task-list-item.component';
+import { StoreModule } from '@ngrx/store';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDividerModule } from '@angular/material/divider';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('TaskListItemComponent', () => {
   let component: TaskListItemComponent;
@@ -8,9 +14,17 @@ describe('TaskListItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TaskListItemComponent ]
+      declarations: [TaskListItemComponent],
+      imports: [
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDividerModule,
+        BrowserAnimationsModule,
+        StoreModule.forRoot(),
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(TaskListItemComponent);
     component = fixture.componentInstance;
