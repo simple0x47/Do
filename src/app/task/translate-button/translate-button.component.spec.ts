@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TranslateButtonComponent } from './translate-button.component';
+import { TaskTranslatableAdapter } from '../task-translatable-adapter';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('TranslateButtonComponent', () => {
   let component: TranslateButtonComponent;
@@ -8,9 +11,14 @@ describe('TranslateButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TranslateButtonComponent ]
+      declarations: [TranslateButtonComponent],
+      imports: [
+        MatDialogModule,
+        MatIconModule
+      ],
+      providers: [{ provide: TaskTranslatableAdapter, useValue: {} }]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(TranslateButtonComponent);
     component = fixture.componentInstance;
