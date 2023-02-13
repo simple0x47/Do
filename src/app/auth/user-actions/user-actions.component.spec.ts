@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserActionsComponent } from './user-actions.component';
+import { AuthService } from '@auth0/auth0-angular';
+import { UserRoleService } from 'src/app/auth-api/user-role/user-role.service';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('UserActionsComponent', () => {
   let component: UserActionsComponent;
@@ -8,9 +11,16 @@ describe('UserActionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserActionsComponent ]
+      declarations: [UserActionsComponent],
+      imports: [
+        MatIconModule
+      ],
+      providers: [
+        { provide: AuthService, useValue: {} },
+        { provide: UserRoleService, useValue: {} }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(UserActionsComponent);
     component = fixture.componentInstance;
