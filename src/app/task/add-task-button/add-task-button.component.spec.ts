@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddTaskButtonComponent } from './add-task-button.component';
+import { StoreModule } from '@ngrx/store';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('AddTaskButtonComponent', () => {
   let component: AddTaskButtonComponent;
@@ -8,9 +10,13 @@ describe('AddTaskButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddTaskButtonComponent ]
+      declarations: [AddTaskButtonComponent],
+      imports: [
+        MatIconModule,
+        StoreModule.forRoot()
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AddTaskButtonComponent);
     component = fixture.componentInstance;
