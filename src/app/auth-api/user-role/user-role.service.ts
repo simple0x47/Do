@@ -27,19 +27,18 @@ export class UserRoleService {
         return;
       }
 
+      console.log("re")
       // Request the user's roles by authenticating Auth0's API token.
-      const rolesResponseSubscription = this.http.get<RolesResponse>(`${environment.auth0.management_api_url}users/${user.sub}/roles`, {
-        headers: {
-          Authorization: `Bearer ${environment.auth0.management_api_token}`
-        }
-      }).subscribe(rolesResponse => {
-        for (const role of rolesResponse) {
-          if (role.name === 'admin') {
-            observer.next(true);
-            return;
+      const rolesResponseSubscription = this.http.get<RolesResponse>(
+        `${environment.user_api.url}/get_roles/${user.sub}`, {})
+        .subscribe(rolesResponse => {
+          for (const role of rolesResponse) {
+            if (role.name === 'admin') {
+              observer.next(true);
+              return;
+            }
           }
-        }
-      });
+        });
 
       return {
         unsubscribe() {
