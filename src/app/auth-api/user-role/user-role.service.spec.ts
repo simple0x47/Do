@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { UserRoleService } from './user-role.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '@auth0/auth0-angular';
 
 describe('RoleService', () => {
@@ -9,10 +9,12 @@ describe('RoleService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClient],
+      imports: [
+        HttpClientModule
+      ],
       providers: [
         UserRoleService,
-        { provide: AuthService, useValue: {} }
+        { provide: AuthService, useValue: {} },
       ]
     });
     service = TestBed.inject(UserRoleService);
